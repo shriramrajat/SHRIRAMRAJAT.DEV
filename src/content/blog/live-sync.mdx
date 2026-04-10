@@ -1,0 +1,10 @@
+---
+title: "Real-time Live Sync via Webhooks"
+date: "2026-04-07"
+summary: "Automatically injecting new resume bullets straight into the portfolio upon pushing to main."
+---
+
+Static portfolios are dead. 
+If an engineer pushes a major infrastructure fix on Friday, their resume component should reflect it on Saturday.
+
+By utilizing GitHub Webhooks, RepoReady listens for `push` events, runs the semantic translation pipeline asynchronously via a background worker, and pushes the compiled bullet point directly to a PlanetScale database powering your frontend.

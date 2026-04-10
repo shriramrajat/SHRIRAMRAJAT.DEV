@@ -1,0 +1,12 @@
+---
+title: "LLM Semantic Translation Pipeline"
+date: "2026-04-08"
+summary: "Using Large Language Models to convert raw programmatic diffs into human-readable engineering leverage."
+---
+
+Once the AST engine extracts the core mechanics of a commit, we pipe those heuristics into a strict prompt chain on GPT-4o. 
+
+The goal isn't summarization. It's **Impact Translation**.
+
+If the code Diff shows `index.js -> lazy()`, the LLM sees the AST diff, maps it to a UI framework context, and translates it for the resume output:
+> *"Implemented component-level code-splitting, reducing initial Time-To-Interactive (TTI) bundles."*

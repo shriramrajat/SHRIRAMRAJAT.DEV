@@ -1,0 +1,30 @@
+---
+title: "Building the AST Parsing Engine"
+date: "2026-04-10"
+summary: "Extracting pure syntax trees rather than relying on commit messages to calculate real code density."
+---
+
+Most developers write terrible commit messages. 
+If an LLM merely reads `"fixed button"`, it has no idea if the developer changed one CSS class or rewrote the entire state synchronization logic for the UI.
+
+To bypass this, **RepoReady** doesn't care about what you type. It cares about what the compiler reads.
+
+### The Babel Extraction
+
+By hooking into `babel/parser`, we pull down the raw commit diff and construct an Abstract Syntax Tree (AST). 
+
+We count:
+1. Novel Variable Declarations
+2. Asynchronous control flow injections (`await/async`)
+3. Cyclomatic complexity shifts.
+
+```javascript
+const ast = parse(codeDiff, {
+  sourceType: "module",
+  plugins: ["jsx", "typescript"],
+});
+
+// Traversal logic measures actual logic depth, not just character count.
+```
+
+If we detect that a function went from containing 3 distinct lexical scopes to 1, while maintaining output tests, we flag the commit as **Refactoring & Optimization**, regardless of whether the developer wrote "cleanup" in the CLI. 

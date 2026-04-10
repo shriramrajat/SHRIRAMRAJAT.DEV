@@ -1,0 +1,17 @@
+---
+title: "Building the Repo Signal Scanner"
+date: "2026-04-10"
+summary: "How we crawl a GitHub repository to extract tech stacks, folder architecture, and hard engineering signals."
+---
+
+Most automated grading tools just read your `package.json` and give up. 
+RepoReady's **Signal Scanner** digs significantly deeper to find out if your project is structured like a tutorial or a production system.
+
+### Recursive Signal Extraction
+When a URL is passed to the analyzer, we pull down the root tree and execute a recursive weighting function. We look for:
+
+1. **Infrastructure Markers:** Are there `.github/workflows`? Is there a `Dockerfile`?
+2. **Quality Assurance:** Do we detect `__tests__`, or `.spec.ts` files? 
+3. **State & DB Tracing:** Are you using raw SQL migrations or modern ORMs like Prisma/Drizzle?
+
+By aggressively crawling the repository structure rather than just looking at the code text, we build an exact mapping of how "serious" the build actually is.

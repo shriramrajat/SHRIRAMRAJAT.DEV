@@ -1,0 +1,15 @@
+---
+title: "Deriving Velocity Scoring"
+date: "2026-04-09"
+summary: "How to track developer throughput locally, proving architectural speed rather than just lines of code."
+---
+
+Velocity in engineering isn't lines written. It's the speed of translating architectural decisions into stable production commits. 
+
+**RepoReady** tracks commit frequency against code logic shifts. If the AST density maintains a high average over time without reverting tests, it outputs a highly favorable **Velocity Score** that recruiters can verify directly.
+
+```python
+def calculate_velocity(commit_batch):
+    stable_commits = filter(lambda c: not c.revert_flag, commit_batch)
+    return sum([c.ast_score for c in stable_commits]) / time_delta
+```
