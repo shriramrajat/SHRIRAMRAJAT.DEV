@@ -95,7 +95,7 @@ export default function Home() {
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className="text-xl sm:text-2xl text-slate-300 font-sans mt-2 font-medium"
               >
-                Rejecting the 9-5. Building products with taste.
+                Backend Infrastructure. Building deterministic systems.
               </motion.h2>
 
               <motion.p 
@@ -106,8 +106,8 @@ export default function Home() {
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className="text-base sm:text-lg text-slate-400 mt-4 font-sans leading-relaxed max-w-2xl"
               >
-                I don&apos;t want a cubicle. I want to build tools that matter. 
-                Currently obsessed with clean code, dark interfaces, and micro-SaaS architecture.
+                I don&apos;t want a cubicle. I want to architect pipelines that scale. 
+                Currently focused on API gateway performance, hard observability, and high-concurrency Micro-SaaS architecture.
               </motion.p>
             </motion.section>
 
@@ -138,7 +138,7 @@ export default function Home() {
                       RepoReady
                     </h4>
                     <p className="font-sans text-slate-400 text-base sm:text-lg leading-relaxed">
-                      Translating your rough GitHub commits into hard-hitting resume points + engineering credibility scoring.
+                      Converts your entire undocumented GitHub repository into a verifiable engineering score (0-100) and recruiter-grade resume syntax.
                     </p>
                     <div className="flex items-center gap-2 mt-2 text-accent font-mono text-sm opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
                       <span>View Full Product</span>
@@ -170,7 +170,7 @@ export default function Home() {
                 {[
                   { path: "/work", number: "01", label: "Case Studies" },
                   { path: "/blog", number: "02", label: "Writing" },
-                  { path: "/personal", number: "03", label: "Human Side" },
+                  { path: "/persona", number: "03", label: "System Identity" },
                   { path: "/connect", number: "04", label: "Connect" }
                 ].map((link) => (
                   <Link key={link.path} href={link.path}>
