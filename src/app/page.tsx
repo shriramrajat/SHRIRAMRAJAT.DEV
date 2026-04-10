@@ -95,20 +95,34 @@ export default function Home() {
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className="text-xl sm:text-2xl text-slate-300 font-sans mt-2 font-medium"
               >
-                Rejecting the 9-5. Building products with taste.
+                I build systems that prove performance — not just functionality.
               </motion.h2>
 
-              <motion.p 
+              <motion.div 
                 variants={{
                   hidden: { opacity: 0, y: 15 },
                   visible: { opacity: 1, y: 0 }
                 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="text-base sm:text-lg text-slate-400 mt-4 font-sans leading-relaxed max-w-2xl"
+                className="text-base sm:text-lg text-slate-400 mt-4 font-sans leading-relaxed max-w-2xl flex flex-col gap-4"
               >
-                I don&apos;t want a cubicle. I want to build tools that matter. 
-                Currently obsessed with clean code, dark interfaces, and micro-SaaS architecture.
-              </motion.p>
+                <p>
+                  Currently building real backend experiments to measure, break, and optimize APIs under heavy concurrent load. 
+                </p>
+                <div className="bg-white/5 border border-white/10 p-4 rounded-lg inline-flex flex-col gap-1 w-max">
+                  <span className="text-xs font-mono text-accent uppercase tracking-widest">Latest Execution</span>
+                  <span className="font-mono text-slate-200">Latency: 979ms &rarr; 2.91ms <span className="text-emerald-400">(-98.5%)</span></span>
+                </div>
+                
+                <div className="flex gap-4 mt-2">
+                  <Link href="/work/rajatbuilds" className="text-sm font-mono text-black bg-accent px-5 py-2 rounded hover:bg-emerald-400 transition-colors shadow-[0_0_15px_rgba(0,255,136,0.3)]">
+                    View Case Study
+                  </Link>
+                  <Link href="#" className="text-sm font-mono text-slate-300 border border-white/20 px-5 py-2 rounded hover:bg-white/10 transition-colors">
+                    Try Live System
+                  </Link>
+                </div>
+              </motion.div>
             </motion.section>
 
             {/* Featured Work Spotlight */}
@@ -119,28 +133,28 @@ export default function Home() {
               className="flex flex-col gap-6"
             >
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                <h3 className="font-mono text-xl text-white">Featured Product</h3>
-                <span className="bg-accent/10 border border-accent/20 text-accent font-mono text-[10px] sm:text-xs px-2.5 py-1 rounded">
-                  Active Project
+                <h3 className="font-mono text-xl text-white">Featured Project</h3>
+                <span className="bg-accent/10 border border-accent/20 text-accent font-mono text-[10px] sm:text-xs px-2.5 py-1 rounded flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span> Active Build
                 </span>
               </div>
 
-              <Link href="/repoready">
+              <Link href="/work/rajatbuilds">
                 <motion.div 
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group relative overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-sm p-6 sm:p-8 transition-colors duration-500 hover:border-accent/40 hover:bg-black/60 shadow-[0_0_20px_rgba(0,0,0,0.5)]"
+                  className="group relative overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-sm p-6 sm:p-8 transition-colors duration-500 hover:border-slate-400/40 hover:bg-black/60 shadow-[0_0_20px_rgba(0,0,0,0.5)]"
                 >
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl"></div>
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-slate-400/0 via-slate-400/10 to-slate-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl"></div>
                   
                   <div className="relative z-10 flex flex-col gap-4">
-                    <h4 className="font-mono text-2xl sm:text-3xl text-white group-hover:text-accent transition-colors duration-300">
-                      RepoReady
+                    <h4 className="font-mono text-2xl sm:text-3xl text-white group-hover:text-slate-300 transition-colors duration-300">
+                      Backend Playground
                     </h4>
                     <p className="font-sans text-slate-400 text-base sm:text-lg leading-relaxed">
-                      Translating your rough GitHub commits into hard-hitting resume points + engineering credibility scoring.
+                      Testing 100,000 row data sets against 50 concurrent request loads to visualize bottleneck failure points and O(n) latency exhaustion.
                     </p>
-                    <div className="flex items-center gap-2 mt-2 text-accent font-mono text-sm opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
+                    <div className="flex items-center gap-2 mt-2 text-slate-400 font-mono text-sm opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
                       <span>View Full Case Study</span>
                       <span>&rarr;</span>
                     </div>
