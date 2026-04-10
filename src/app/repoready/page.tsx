@@ -166,7 +166,7 @@ export default function RepoReadyPitch() {
               hidden: { opacity: 0 },
               visible: { opacity: 1, transition: { staggerChildren: 0.6 } }
             }}
-            className="bg-[#08080a] border border-white/5 rounded-2xl p-6 font-mono text-sm shadow-2xl flex flex-col gap-3 relative overflow-hidden h-full"
+            className="bg-[#08080a] border border-white/5 rounded-2xl p-4 sm:p-6 font-mono text-xs sm:text-sm shadow-2xl flex flex-col gap-3 relative overflow-hidden h-full break-all sm:break-normal"
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-50"></div>
             <div className="flex gap-2 mb-2 pb-4 border-b border-white/5">
@@ -218,7 +218,7 @@ export default function RepoReadyPitch() {
             <motion.div 
               variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1 } }}
               transition={{ type: "spring", stiffness: 100 }}
-              className="bg-red-500/5 border border-red-500/10 rounded-2xl p-6 relative overflow-hidden group hover:border-red-500/30 transition-colors duration-500"
+              className="bg-red-500/5 border border-red-500/10 rounded-2xl p-4 sm:p-6 relative overflow-hidden group hover:border-red-500/30 transition-colors duration-500"
             >
               <span className="absolute top-4 right-4 text-[10px] font-mono text-red-400/50 uppercase tracking-widest border border-red-500/20 px-2 py-0.5 rounded">Typical Resume Point</span>
               <p className="font-mono text-slate-300 text-sm mt-4">&gt; "Built a React app."</p>
@@ -236,7 +236,7 @@ export default function RepoReadyPitch() {
             <motion.div 
               variants={{ hidden: { opacity: 0, scale: 0.95, y: 20 }, visible: { opacity: 1, scale: 1, y: 0 } }}
               transition={{ type: "spring", stiffness: 80, damping: 15 }}
-              className="bg-emerald-500/5 border border-emerald-500/20 rounded-2xl p-6 relative overflow-hidden group shadow-[0_0_30px_rgba(0,255,136,0.05)] h-full hover:shadow-[0_0_50px_rgba(0,255,136,0.1)] hover:border-emerald-500/40 transition-all duration-500"
+              className="bg-emerald-500/5 border border-emerald-500/20 rounded-2xl p-4 sm:p-6 relative overflow-hidden group shadow-[0_0_30px_rgba(0,255,136,0.05)] h-full hover:shadow-[0_0_50px_rgba(0,255,136,0.1)] hover:border-emerald-500/40 transition-all duration-500"
             >
                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                
