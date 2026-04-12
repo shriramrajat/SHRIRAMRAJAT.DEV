@@ -13,7 +13,7 @@ export default function Home() {
         <motion.div 
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          transition={{ duration: 1.2, ease: "easeOut" as const }}
           className="absolute right-0 bottom-0 w-full h-[100%] md:h-[85%] flex items-end justify-center md:border-l md:border-white/5 bg-white/[0.01] overflow-hidden"
         >
           <div className="w-full h-full bg-zinc-900 absolute inset-0 opacity-20"></div>

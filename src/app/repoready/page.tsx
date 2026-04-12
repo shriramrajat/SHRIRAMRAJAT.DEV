@@ -83,7 +83,7 @@ export default function RepoReadyPitch() {
                 hidden: { opacity: 0, scale: 0.8, filter: "blur(10px)" },
                 visible: { opacity: 1, scale: 1, filter: "blur(0px)" }
               }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{ duration: 0.8, ease: "easeOut" as const }}
               className="mt-4 overflow-hidden relative inline-block p-1"
             >
               <motion.span 
@@ -126,7 +126,7 @@ export default function RepoReadyPitch() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 2.5 }}
+            transition={{ duration: 0.8, ease: "easeOut" as const, delay: 2.5 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 z-10 w-full sm:w-auto"
           >
             <Link href="https://repoready.online" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
