@@ -1,0 +1,48 @@
+---
+title: "SentinelStack: Architecting a Deterministic API Gateway for High Concurrency"
+date: "2026-04-12"
+summary: "How I engineered a custom API Gateway from scratch using FastAPI and Redis to eliminate race conditions, maintain atomic rate limiting, and decouple zero-latency observation layers."
+---
+
+Most developers default to using Nginx, Kong, or API Gateway SaaS products out of the box. But as a Systems Engineer, relying on a black-box implementation for the most critical entry point of your architecture removes all ability to optimize deterministically.
+
+I built **SentinelStack** specifically to control the hardware constraints at the absolute front door.
+
+### The Problem with Concurrency and Middleware
+
+When an API scales beyond several hundred concurrent connections, generic rate-limiting algorithms fail. 
+A naive implementation reads a token count from a DB, checks if it exceeds a limit, and writes back the updated count. If 1,000 requests hit simultaneously, **race conditions** occur between the `read` and the `update`. Your limiter breaks, and your backend crashes under uncontrolled throughput.
+
+### The Atomic Solution
+
+To solve this, SentinelStack shifts entirely away from Application-Layer rate checking. 
+
+I implemented a **Token Bucket Algorithm** mapped directly inside **Redis using Atomic Lua Scripts**.
+
+```lua
+local tokens_key = KEYS[1]
+local timestamp_key = KEYS[2]
+local rate = tonumber(ARGV[1])
+local capacity = tonumber(ARGV[2])
+local now = tonumber(ARGV[3])
+local requested = tonumber(ARGV[4])
+
+-- The script executes atomically in Redis, eliminating race conditions entirely
+```
+
+Because Redis executes Lua scripts atomically, it is structurally impossible for a concurrent request to intercept the evaluation cycle. I can blast the Gateway with thousands of concurrent RPS, and the rate limiter will never drift a single token.
+
+### Decoupling the Observation Layer
+
+The other trap is synchronous logging. Writing incident metrics into PostgreSQL directly from the request pipeline guarantees exponential latency decay.
+
+SentinelStack solves this via event decoupling:
+1. The gateway executes context injection and auth.
+2. It pushes the telemetry packet into an **In-Memory Async Queue**.
+3. It immediately routes the clean request to the handler.
+
+A completely detached background worker drains the queue and pushes the data to PostgreSQL and Prometheus out-of-band. The observation layer never blocks the critical request path.
+
+### The Verdict
+
+By owning the Gateway layer, I proved that infrastructure engineering isn't about deploying more servers. It is about understanding distributed race conditions, atomic hardware limits, and asynchronous decoupling so that the servers you *do* have never fail under pressure.
