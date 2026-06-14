@@ -308,6 +308,45 @@ export default function WorkDirectory() {
             </div>
           </motion.article>
 
+          {/* Project 7: JARVIS OS */}
+          <motion.article 
+            variants={{
+              hidden: { opacity: 0, x: -20 },
+              visible: { opacity: 1, x: 0 }
+            }}
+            className="group relative border border-white/10 bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden hover:border-cyan-500/30 transition-colors duration-500"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 sm:p-10 relative z-10">
+              <div className="md:col-span-2 flex flex-col gap-4">
+                <div className="flex items-center gap-3">
+                  <h2 className="text-3xl font-mono text-white group-hover:text-cyan-455 transition-colors">JARVIS OS</h2>
+                  <span className="font-mono text-[10px] text-cyan-400 border border-cyan-500/30 px-2 py-0.5 rounded-full bg-cyan-500/10 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span> Active Build
+                  </span>
+                </div>
+                <p className="text-slate-400 font-sans text-base leading-relaxed">
+                  A personal ambient AI operating system layer for local desktop automation. Orchestrates speech recognition, hotword detection, and an asynchronous event bus linked to Google Gemini 2.0.
+                </p>
+                <Link href="/work/jarvis" className="font-mono text-sm text-cyan-400 mt-4 flex items-center gap-2 opacity-80 group-hover:opacity-100 group-hover:translate-x-2 transition-all">
+                  Read Case Study &rarr;
+                </Link>
+              </div>
+              <div className="md:col-span-1 border-l border-white/10 pl-6 hidden md:flex flex-col gap-4 justify-center">
+                <div className="flex flex-col">
+                  <span className="text-xs text-slate-500 font-mono uppercase">Tech Stack</span>
+                  <span className="text-sm text-white font-mono mt-1">Python, React, Electron, Gemini 2.0</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xs text-slate-500 font-mono uppercase">Focus</span>
+                  <span className="text-sm text-white font-mono mt-1">Event Bus, Voice Recognition, System Automation</span>
+                </div>
+              </div>
+            </div>
+          </motion.article>
+
+
 
 
 
